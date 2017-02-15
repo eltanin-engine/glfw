@@ -1,0 +1,13 @@
+name: glfw
+version: 0.1.0
+
+authors:
+  - mberends <max.berends@cg.nl>
+
+crystal: 0.20.5
+
+dependencies:
+  lib_glfw:
+    github: lirith-engine/lib_glfw
+
+license: MIT
