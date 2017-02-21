@@ -1,4 +1,5 @@
 require "lib_glfw"
+require "lib_gl"
 require "./glfw/*"
 
 module GLFW
