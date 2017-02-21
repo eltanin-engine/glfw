@@ -30,29 +30,10 @@ module GLFW
       @statistics[:frames] += 1
     end
 
-    def calculate_delta
-      @last_time ||= LibGLFW.get_time
-
-      return 0 if @last_time.is_a?(Nil)
-
-      current_time = LibGLFW.get_time
-      delta_time = current_time - @last_time
-      @last_time = current_time
-
-      delta_time
-    end
-
     def open(&block)
       set_context_current
-      start = last_time = LibGLFW.get_time
 
       while true
-        current_time = LibGLFW.get_time
-        delta_time = current_time - last_time
-        last_time = current_time
-
-        p calculate_delta
-        p delta_time
 
         log_stats
         LibGLFW.poll_events
@@ -61,9 +42,6 @@ module GLFW
         yield
       end
 
-      delta_t = LibGLFW.get_time - start
-      puts "#{@statistics[:frames]} in #{delta_t} secs"
-      puts "FPS: #{@statistics[:frames] / delta_t}"
       LibGLFW.terminate
     end
 
