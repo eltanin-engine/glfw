@@ -23,7 +23,7 @@ module GLFW
     end
 
     def set_context_current
-      LibGLFW.set_current_context @handle
+      LibGLFW.make_context_current @handle
     end
 
     def log_stats
